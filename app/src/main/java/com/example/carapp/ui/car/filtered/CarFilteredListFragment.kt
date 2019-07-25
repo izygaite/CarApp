@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -71,17 +72,20 @@ class CarFilteredListFragment : ScopedFragment(), KodeinAware {
             sort = !sort
 
         }
-        batteryLevelInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+        buttonr.setOnClickListener {
+            viewModel.setBatteryLevelQuery(batteryLevelSlider.progress)
+        }
+        batteryLevelSlider.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                val value = progress * (seekBar.width - 2 * seekBar.thumbOffset) / seekBar.max
+                progressText.text = progress.toString()
+                progressText.x = seekBar.x + value + seekBar.thumbOffset / 2
             }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                //  viewModel.setFilter(p0.toString())
-                viewModel.setBatteryLevelQuery(p0.toString().toInt())
-
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
             }
         })
 

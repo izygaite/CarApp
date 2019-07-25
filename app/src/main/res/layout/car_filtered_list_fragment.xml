@@ -30,6 +30,7 @@
               android:id="@+id/loadingTextView"
               android:text="@string/loading"
     />
+
     <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/plateNumberInput"
             android:layout_width="match_parent"
@@ -47,19 +48,64 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:hint="SORT"
     />
-    <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/batteryLevelInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/plateNumberInput"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Battery"
-    />
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       app:layout_constraintEnd_toEndOf="parent"
+                                                       app:layout_constraintTop_toBottomOf="@id/plateNumberInput"
+                                                       app:layout_constraintStart_toStartOf="parent"
+                                                       android:id="@+id/filterLayout"
+                                                       android:orientation="horizontal"
+    >
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:text="FILTER"
+                  android:id="@+id/filter_text"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/filter_text"
+                  android:text="0"
+                  android:layout_marginStart="10dp"
+
+                  android:id="@+id/progressText"
+        />
+        <SeekBar android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/filter_text"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="@id/guideline"
+                 android:id="@+id/batteryLevelSlider"
+                 android:layout_weight="0.10"
+                 android:progress="0"
+                 android:max="100"
+        />
+
+        <Button android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/filter"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toEndOf="@+id/batteryLevelSlider"
+                app:layout_constraintTop_toBottomOf="@+id/filter_text"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/buttonr"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline"
+                                                    app:layout_constraintGuide_begin="295dp"
+                                                    android:orientation="vertical"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/filteredListRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/batteryLevelInput"
+            app:layout_constraintTop_toBottomOf="@id/filterLayout"
             app:layout_constraintStart_toStartOf="parent"
     >
 
