@@ -25,8 +25,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
+androidExtensions {
+    experimental = true
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -71,10 +78,26 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     //Google
-    implementation "com.google.android.gms:play-services-location:17.0.0"
-    implementation "com.google.android.gms:play-services-maps:17.0.0"
-    implementation "com.google.android.gms:play-services-location:17.0.0"
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+    implementation "com.google.android.gms:play-services-maps:16.0.0"
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
 
+
+    //GSON
     implementation "com.google.code.gson:gson:2.8.5"
+
+    //RecyclerView
+    implementation 'com.xwray:groupie:2.3.0'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.3.0'
+    //RxPermissions
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+
+    implementation 'com.patloew.rxlocation:rxlocation:1.0.5'
+
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
+
 
 }

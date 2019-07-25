@@ -3,4 +3,6 @@
     <string name="list">List</string>
     <string name="map">Map</string>
     <string name="filter">Filter</string>
+    <string name="loading">Loading</string>
+    <string name="content_description_car_image">Car image</string>
 </resources>

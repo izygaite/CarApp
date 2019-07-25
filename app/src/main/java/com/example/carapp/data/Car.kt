@@ -9,4 +9,11 @@ data class Car(
     val model: Model,
     val plateNumber: String,
     val rate: Rate
-)
+) {
+    fun distance(deviceLocation: android.location.Location): Float {
+        val currentLocation = android.location.Location("")
+        currentLocation.latitude = location.latitude
+        currentLocation.longitude = location.longitude
+        return currentLocation.distanceTo(deviceLocation) / 1000
+    }
+}
