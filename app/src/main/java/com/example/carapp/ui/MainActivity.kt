@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             super.onLocationResult(p0)
         }
     }
-    private var googleMap: GoogleMap? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
