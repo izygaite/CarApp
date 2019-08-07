@@ -7,13 +7,10 @@ import androidx.lifecycle.ViewModel
 import com.example.carapp.data.Car
 import com.example.carapp.data.network.CarRepository
 import com.example.carapp.internal.FilterState
-import com.example.carapp.internal.SortType
 
 class MapViewModel(private val carRepository: CarRepository) : ViewModel() {
-    private val allCars = carRepository.getAvailableCars()
-
+    private var allCars = carRepository.getAvailableCars()
     var filter = MutableLiveData<FilterState>()
-
     val location by lazy {
         carRepository.getLocation().value!!
     }
@@ -30,15 +27,6 @@ class MapViewModel(private val carRepository: CarRepository) : ViewModel() {
             }
             cars
         }
-    }
-    fun setPlateNumberQuery(query: String) {
-        filter.value!!.plateNumberQuery = query
-        filter.postValue(filter.value)
-    }
-
-    fun setSort(query: SortType) {
-        filter.value!!.sortQuery = query
-        filter.postValue(filter.value)
     }
 
     fun setBatteryLevelQuery(query: Int) {

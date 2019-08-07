@@ -14,7 +14,6 @@ import com.example.carapp.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
-import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -46,7 +45,6 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         } else {
             requestLocationPermissions()
         }
-
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -73,7 +71,7 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 bindLocationManager()
             } else {
-                Toast.makeText(this, "PLEASE set permissions manually.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.set_permissions_manually), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -81,6 +79,5 @@ class MainActivity : AppCompatActivity(), KodeinAware {
     private fun bindLocationManager() {
         LBLocationManager(this, fusedLocationProviderClient, locationCallback)
     }
-
 
 }

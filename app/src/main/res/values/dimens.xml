@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_layout">10dp</dimen>
+    <dimen name="margin_layout_end">20dp</dimen>
+    <dimen name="text_input">16sp</dimen>
+    <dimen name="text_button">20sp</dimen>
+    <dimen name="margin_listItem">4dp</dimen>
+    <dimen name="margin_top_large">100dp</dimen>
+</resources>

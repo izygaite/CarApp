@@ -8,8 +8,4 @@
             android:id="@+id/mapFragment"
             android:icon="@drawable/ic_map"
             android:title="@string/map"/>
-    <item
-            android:id="@+id/carFilteredListFragment"
-            android:icon="@drawable/ic_filter_list"
-            android:title="@string/filter"/>
 </menu>

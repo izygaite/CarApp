@@ -1,8 +1,25 @@
 <resources>
     <string name="app_name">CarApp</string>
+    <string name="title_list">Car list</string>
+    <string name="title_map">Car map</string>
     <string name="list">List</string>
     <string name="map">Map</string>
     <string name="filter">Filter</string>
     <string name="loading">Loading</string>
     <string name="content_description_car_image">Car image</string>
+    <string name="apply_filter">Apply filter</string>
+    <string name="clear_filter">Clear filter</string>
+    <string name="sort">Sort</string>
+    <string name="plate_number">Plate number</string>
+    <string name="input_vehicle_plate_number">Input vehicle plate number</string>
+    <string name="filter_by_remaining_battery_level">Filter by remaining battery level</string>
+    <string name="zero">0</string>
+    <string name="cannot_find_cars_for_this_filter_try_changing_the_filter">Cannot find cars for this filter. Try
+        changing the filter.
+    </string>
+    <string name="content_description_empty_list_image">content_description_empty_list_image</string>
+    <string name="filter_by_remaining_battery">Filter by remaining battery</string>
+    <string name="sort_by_location_asc">Sort by location ASC</string>
+    <string name="sort_by_location_desc">Sort by location DESC</string>
+    <string name="set_permissions_manually">Please set permissions manually.</string>
 </resources>

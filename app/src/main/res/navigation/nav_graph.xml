@@ -3,15 +3,9 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
             app:startDestination="@id/carListFragment">
-
-    <fragment android:name="com.example.carapp.ui.car.list.CarListFragment"
-              android:label="car_list_fragment" tools:layout="@layout/car_list_fragment"
-              android:id="@+id/carListFragment"/>
-    <fragment android:id="@+id/carFilteredListFragment"
-              android:name="com.example.carapp.ui.car.filtered.CarFilteredListFragment"
-              android:label="car_filtered_list_fragment" tools:layout="@layout/car_filtered_list_fragment"/>
+    <fragment android:id="@+id/carListFragment"
+              android:name="com.example.carapp.ui.car.list.CarListFragment"
+              android:label="car_filtered_list_fragment" tools:layout="@layout/car_list_fragment"/>
     <fragment android:id="@+id/mapFragment" android:name="com.example.carapp.ui.car.map.MapFragment"
               android:label="map_fragment" tools:layout="@layout/map_fragment"/>
-    <fragment android:id="@+id/carFragment" android:name="com.example.carapp.ui.car.CarFragment"
-              android:label="car_fragment" tools:layout="@layout/car_fragment"/>
 </navigation>

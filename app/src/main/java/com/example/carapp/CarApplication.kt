@@ -5,7 +5,6 @@ import android.content.Context
 import com.example.carapp.data.network.*
 import com.example.carapp.data.provider.LocationProvider
 import com.example.carapp.data.provider.LocationProviderImpl
-import com.example.carapp.ui.car.filtered.CarFilteredListViewModelFactory
 import com.example.carapp.ui.car.list.CarListViewModelFactory
 import com.example.carapp.ui.car.map.MapViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -27,16 +26,8 @@ class CarApplication : Application(), KodeinAware {
         bind<CarNetworkDataSource>() with singleton { CarNetworkDataSourceImpl(instance()) }
         bind<CarRepository>() with singleton { CarRepositoryImpl(instance(), instance()) }
         bind() from provider { CarListViewModelFactory(instance()) }
-        bind() from provider { CarFilteredListViewModelFactory(instance()) }
         bind() from provider { MapViewModelFactory(instance()) }
         bind() from provider { FusedLocationProviderClient(instance<Context>()) }
         bind<LocationProvider>() with singleton { LocationProviderImpl(instance(), instance()) }
-
-
     }
-
-    override fun onCreate() {
-        super.onCreate()
-    }
-
 }
