@@ -103,13 +103,7 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
             }
         })
         googleMap.setOnMarkerClickListener {
-            val smoothScroller: RecyclerView.SmoothScroller = object : LinearSmoothScroller(context) {
-                override fun getVerticalSnapPreference(): Int {
-                    return SNAP_TO_START
-                }
-            }
-            smoothScroller.targetPosition = it.tag as Int
-            recyclerView_carListMap.layoutManager!!.startSmoothScroll(smoothScroller)
+            initSmoothScroller(it.tag as Int)
             carMarkersList[it.tag as Int].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car_current))
             for (i in 0 until carMarkersList.size) {
                 if (i != it.tag as Int) {
@@ -126,8 +120,7 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
                 textView_batteryLevelProgress.x = seekBar.x + value + seekBar.thumbOffset / 2
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
-            }
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 viewModel.setBatteryLevelQuery(seekBar.progress)
@@ -152,6 +145,7 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
                     carMarkersList[i].setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_car))
                 }
             }
+            initSmoothScroller(itemPosition)
         }
     }
 
@@ -177,6 +171,15 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     override fun onLowMemory() {
         super.onLowMemory()
         mapView.onLowMemory()
+    }
+    fun initSmoothScroller(position: Int){
+        val smoothScroller: RecyclerView.SmoothScroller = object : LinearSmoothScroller(context) {
+            override fun getVerticalSnapPreference(): Int {
+                return SNAP_TO_START
+            }
+        }
+        smoothScroller.targetPosition = position
+        recyclerView_carListMap.layoutManager!!.startSmoothScroll(smoothScroller)
     }
 
 }

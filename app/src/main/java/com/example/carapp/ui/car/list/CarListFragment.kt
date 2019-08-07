@@ -92,6 +92,7 @@ class CarListFragment : ScopedFragment(), KodeinAware {
             button_filter.visibility = View.VISIBLE
             button_sort.visibility = View.VISIBLE
             button_close.visibility = View.GONE
+            inputText_plateNumberInput.hideKeyboard()
         }
     }
 
@@ -131,6 +132,7 @@ class CarListFragment : ScopedFragment(), KodeinAware {
         inputText_plateNumberInput.text!!.clear()
         textView_batteryLevelProgress.text = resources.getString(com.example.carapp.R.string.zero)
         seekBar_batteryLevel.progress = 0
+        inputText_plateNumberInput.hideKeyboard()
     }
 
     private fun changeEmptyListLayoutVisibility(isEmpty: Boolean) {

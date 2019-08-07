@@ -19,7 +19,7 @@
     </string>
     <string name="content_description_empty_list_image">content_description_empty_list_image</string>
     <string name="filter_by_remaining_battery">Filter by remaining battery</string>
-    <string name="sort_by_location_asc">Sort by location ASC</string>
-    <string name="sort_by_location_desc">Sort by location DESC</string>
+    <string name="sort_by_location_asc">By distance ASC</string>
+    <string name="sort_by_location_desc">By distance DESC</string>
     <string name="set_permissions_manually">Please set permissions manually.</string>
 </resources>
