@@ -7,8 +7,7 @@ data class Car(
     val isCharging: Boolean,
     val location: Location,
     val model: Model,
-    val plateNumber: String,
-    val rate: Rate
+    val plateNumber: String
 ) {
     fun distance(deviceLocation: android.location.Location): Float {
         val currentLocation = android.location.Location("")
