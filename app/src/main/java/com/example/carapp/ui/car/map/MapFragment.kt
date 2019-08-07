@@ -38,7 +38,6 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     override fun onMapReady(p0: GoogleMap?) {
         googleMap = p0!!
-        googleMap.isMyLocationEnabled = true
         val startingLocation = LatLng(54.6872, 25.2797)
         val cameraPosition = CameraPosition.Builder().target(startingLocation).zoom(12f).build()
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
@@ -150,7 +149,7 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     }
 
     private fun List<Car>.toCarItems(): List<CarItem> {
-        return this.map { CarItem(it, viewModel.location) }
+        return this.map { CarItem(it, viewModel.location!!.value) }
     }
 
     override fun onResume() {

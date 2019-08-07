@@ -11,9 +11,7 @@ import com.example.carapp.internal.FilterState
 class MapViewModel(private val carRepository: CarRepository) : ViewModel() {
     private var allCars = carRepository.getAvailableCars()
     var filter = MutableLiveData<FilterState>()
-    val location by lazy {
-        carRepository.getLocation().value!!
-    }
+    val location = carRepository.getLocation()
     var filteredCars: LiveData<List<Car>>
 
     init {

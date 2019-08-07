@@ -14,12 +14,14 @@ class LocationProviderImpl(
     context: Context
 ) : LocationProvider {
     private var locationData: MutableLiveData<Location>? = MutableLiveData()
-
     @SuppressLint("MissingPermission")
     override fun fetchLocation(): MutableLiveData<Location> {
         if (checkPermissions()) {
             fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-                locationData!!.value = it
+                locationData!!.postValue(it)
+            }
+            fusedLocationProviderClient.lastLocation.addOnFailureListener {
+                locationData!!.postValue(null)
             }
         }
         return locationData!!

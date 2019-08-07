@@ -9,12 +9,16 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_car.*
 
-class CarItem(val car: Car, val location: Location) : Item() {
+class CarItem(val car: Car, val location: Location?) : Item() {
     override fun getLayout(): Int = R.layout.item_car
     @SuppressLint("SetTextI18n")
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.apply {
-            textView_distance.text = "${String.format("%2.1f", car.distance(location))} km"
+            if (location != null) {
+                textView_distance.text = "${String.format("%2.1f", car.distance(location))} km"
+            } else {
+                textView_distance.text = ""
+            }
             textView_location.text = car.location.address
             textView_modelInfo.text = car.model.title
             textView_plateNumber.text = car.plateNumber

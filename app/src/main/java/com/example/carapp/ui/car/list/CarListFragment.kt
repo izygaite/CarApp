@@ -105,7 +105,7 @@ class CarListFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun List<Car>.toCarItems(): List<CarItem> {
-        return this.map { CarItem(it, viewModel.location.value!!) }
+        return this.map { CarItem(it, viewModel.location!!.value) }
     }
 
     private fun showPopup(view: View) {

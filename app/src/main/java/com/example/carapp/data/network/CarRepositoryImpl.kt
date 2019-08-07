@@ -1,5 +1,6 @@
 package com.example.carapp.data.network
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -18,7 +19,7 @@ class CarRepositoryImpl(
 
     override fun getFilteredCars(filterState: FilterState): LiveData<List<Car>> {
         val temp = carNetworkDataSource.downloadedAvailableCars
-        val location = locationProvider.fetchLocation()
+        val location: MutableLiveData<Location>? = locationProvider.fetchLocation()
         var filtered = temp
         if (!filterState.plateNumberQuery.isNullOrEmpty()) {
             filtered = getCarsFilteredByPlateNumber(filterState.plateNumberQuery!!, filtered)
@@ -26,7 +27,7 @@ class CarRepositoryImpl(
         if (filterState.batteryLevelQuery != null && filterState.batteryLevelQuery!! > 0) {
             filtered = getCarsFilteredByBatteryLevel(filterState.batteryLevelQuery!!, filtered)
         }
-        if (filterState.sortQuery != null) {
+        if (filterState.sortQuery != null && location != null && location.value != null) {
             filtered = sortCars(filterState.sortQuery!!, filtered, location.value!!)
         }
         return filtered
@@ -51,7 +52,6 @@ class CarRepositoryImpl(
 
     private fun getCarsFilteredByBatteryLevel(batteryLevel: Int, temp: LiveData<List<Car>>): LiveData<List<Car>> {
         val filteredCars = MutableLiveData<List<Car>>()
-
         return Transformations.switchMap(temp) { carList ->
             val filteredList =
                 carList.filter { car ->
