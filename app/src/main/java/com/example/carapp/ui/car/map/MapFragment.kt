@@ -27,7 +27,6 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
 
-
 class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     private var carMarkersList = mutableListOf<Marker>()
     override val kodein by closestKodein()
@@ -40,9 +39,8 @@ class MapFragment : ScopedFragment(), KodeinAware, OnMapReadyCallback {
     override fun onMapReady(p0: GoogleMap?) {
         googleMap = p0!!
         googleMap.isMyLocationEnabled = true
-        val kaunas = LatLng(54.8985, 23.9036)
-//        //googleMap.addMarker(MarkerOptions().position(kaunas))
-        val cameraPosition = CameraPosition.Builder().target(kaunas).zoom(12f).build()
+        val startingLocation = LatLng(54.6872, 25.2797)
+        val cameraPosition = CameraPosition.Builder().target(startingLocation).zoom(12f).build()
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
         initUI()
     }
